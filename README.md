@@ -26,10 +26,15 @@ git clone github.com/cyworld8x/go-distributed-applications.git
 2. Navigate to the repository directory:
 cd app
 
-3. Build the application:
-go build ./...
-
-4. Run the tests to ensure everything is set up correctly:
+3. Build the applications:
+To build Log Service: go build .\cmd\logservice\
+To build Grading Service: go build .\cmd\gradingservice\
+To build Registry Service: go build .\cmd\registryservice\
+4. Run the applications:
+To run Log Service: go run .\cmd\logservice\
+To run Grading Service: go run .\cmd\gradingservice\
+To run Registry Service: go run .\cmd\registryservice\
+6. Run the tests to ensure everything is set up correctly:
 go test ./...
 
 
