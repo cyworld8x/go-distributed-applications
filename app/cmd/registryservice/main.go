@@ -9,6 +9,8 @@ import (
 )
 
 func main() {
+	registry.SetupRegistryService()
+
 	http.Handle("/services",
 		&registry.RegistryService{})
 
