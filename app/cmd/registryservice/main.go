@@ -1,4 +1,4 @@
-package main
+package registryservice
 
 import (
 	"app/registry"
