@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  loggingservice:
+    container_name: loggingservice
+    build:
+      context: .
+      dockerfile: ./cmd/logservice/Dockerfile
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    ports:
+      - 4000:4000
+    depends_on:
+      - registryservice
+    networks:
+      - appnetwork
+    command: ["./bin/logservice"]    
+  registryservice:
+    container_name: registryservice
+    build:
+      context: .
+      dockerfile: ./cmd/registryservice/Dockerfile 
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t  
+    ports:
+      - 3000:3000
+    networks:
+      - appnetwork
+    command: ["./bin/registryservice"]
+  gradingservice:
+    container_name: gradingservice
+    build:
+      context: .
+      dockerfile: ./cmd/gradingservice/Dockerfile     
+    stdin_open: true # docker run i
+    tty: true        # docker run -t
+    ports:
+      - 6000:6000
+    depends_on:
+      - registryservice
+      - loggingservice
+    networks:
+      - appnetwork
+    command: ["./bin/gradingservice"]
+networks:
+  appnetwork:
+    name: appnetwork
+    external: true      
+    driver: bridge

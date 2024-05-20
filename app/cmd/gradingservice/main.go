@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	host, port := "localhost", "6000"
+	host, port := "gradingservice", "6000"
 	serviceAddress := fmt.Sprintf("http://%v:%v", host, port)
 	var r registry.Registration
 	r.ServiceName = registry.GradingService

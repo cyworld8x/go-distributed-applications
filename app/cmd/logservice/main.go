@@ -12,7 +12,7 @@ import (
 func main() {
 	log.Run("./app.log")
 
-	host, port := "localhost", "4000"
+	host, port := "loggingservice", "4000"
 	serviceAddress := fmt.Sprintf("http://%v:%v", host, port)
 
 	var r registry.Registration

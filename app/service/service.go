@@ -3,7 +3,6 @@ package service
 import (
 	"app/registry"
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 )
@@ -27,18 +26,6 @@ func startService(ctx context.Context, serviceName registry.ServiceName, host, p
 
 	go func() {
 		log.Println((srv.ListenAndServe()))
-	}()
-
-	go func() {
-		fmt.Printf("%v started. Press any key to stop. \n", serviceName)
-
-		var s string
-		fmt.Scanln(&s)
-		err := registry.ShutdownService(fmt.Sprintf("http://%v:%v", host, port))
-		if err != nil {
-			log.Println(err)
-		}
-		srv.Shutdown((ctx))
 		cancel()
 	}()
 

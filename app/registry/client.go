@@ -124,9 +124,11 @@ func RegisterService(r Registration) error {
 		return err
 	}
 
+	fmt.Printf("Registered service with registry to: %v\n", ServicesURL)
+
 	if res.StatusCode != http.StatusOK {
 		return fmt.Errorf("failed to deregister service. Registry service "+
-			"responded with code %v", res.StatusCode)
+			"responded with code %v %v", res.StatusCode, ServicesURL)
 	}
 	return nil
 }
